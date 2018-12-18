@@ -1,0 +1,38 @@
+<h1>Welcome to the Ann Arbor Venues App</h1>
+<h5>Search for any venue (bar, restaurant, shop, etc.) in Ann Arbor to read about reviews and tips for Foursquare!</h5>
+
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+<br>
+
+<br>
+{% block main_content %}
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.search.label }} {{ form.search() }}
+	{{ form.submit }}
+</form>
+
+{% endblock %}
+
+{% block navigation %}
+
+<ul><i>
+    <li><a href="{{ url_for('index') }}">Search for venue reviews</a>
+    <li><a href="{{ url_for('all_reviews') }}">See all venue reviews</a></li>
+    <li><a href="{{ url_for('search_terms') }}">See all past venue searches</a></li>
+    <li><a href="{{ url_for('create_collection') }}">Create a venue review collection</a></li>
+    <li><a href="{{ url_for('user_collections') }}">See your venue review collection</a></li>
+</ul>
+<br>
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

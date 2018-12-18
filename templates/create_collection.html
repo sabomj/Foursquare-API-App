@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block navigation %}
+
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+<h2> Create a New Venue Review Collection </h2>
+
+<form action="" method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.name.label }} {{ form.name() }}
+	{{ form.choose_venues.label }} {{ form.choose_venues() }}
+  {{ form.description.label }} {{ form.description() }}
+	{{ form.submit.label }} {{ form.submit() }}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

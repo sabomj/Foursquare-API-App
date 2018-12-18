@@ -1,0 +1,18 @@
+
+{% extends 'index.html' %}
+{% block navigation %}
+
+    {{ super() }}
+{% endblock %}
+
+
+
+{% block main_content %}
+<h2> All Venue Reviews </h2>
+
+    <ul>
+{% for x in all_search_terms %}
+      	<p><b> Name of previously searched venue: </b>{{ x }}</p>
+    {% endfor %}
+    </ul>
+{% endblock %}

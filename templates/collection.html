@@ -1,0 +1,16 @@
+<h1>{{ collection.name }}</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+{% for x in venues %}
+      <h3>{{ x.venue }}</h3>
+      <h4>{{ x.review_text }}</h4>
+{% endfor %}
+
+
+{% endblock %}

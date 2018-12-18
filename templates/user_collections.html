@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block navigation %}
+
+
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+<h1>My Collections</h1>
+
+
+<ul>
+{% for x in collections %}
+    <li>
+      <h3>Collection Name: <a href="http://localhost:5000/collection/{{ x.id }}">{{ x.name }}</a></h3>
+      <form method="POST" action="/delete/{{ x.name }}">
+          {{ form1.submit() }}
+      </form>
+      <p>Description of Collection: {{ x.description }}</p>
+      <form method="POST" action="/update/{{ x.description }}">
+                {{ form.hidden_tag() }}
+                {{ form.submit() }}
+      </form>
+    </li>
+
+
+{% endfor %}
+</ul>
+{% if not collections %}
+  There are no saved reviews.
+{% endif %}
+
+
+
+{% endblock %}

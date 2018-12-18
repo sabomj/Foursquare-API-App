@@ -1,0 +1,31 @@
+<h1>Search results for {{ term.term }}</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<ul>
+{% for x in searched_reviews %}
+<li>
+  <h4>{{ x.venue }}</h4>
+  <h4>{{ x.review_text }}</h4>
+
+  {% if not reviews %}
+
+  {% endif %}
+</li>
+{% endfor %}
+</ul>
+
+
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

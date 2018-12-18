@@ -1,0 +1,34 @@
+
+{% extends 'index.html' %}
+
+{% block navigation %}
+
+ {{ super() }}
+{% endblock %}
+{% block main_content %}
+<h2> All Venue Reviews </h2>
+<br>
+
+<ul>
+{% for x in all_reviews %}
+
+
+  <h3>{{ x.venue}}</h3>
+  <h4>{{ x.review_text }}</h4>
+
+
+<br>
+{% endfor %}
+</ul>
+
+{% if not all_reviews %}
+There are no saved reviews to show.
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
